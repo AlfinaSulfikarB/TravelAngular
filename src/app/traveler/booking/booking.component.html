@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="traveler">{{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="admin">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="book">Update Booking</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add Booking</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login">Logout</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="form-control">
+    <input type="text" class="form-control m-2" placeholder="Search text here..." [(ngModel)]="filter">
+  </div>
+  <h2 class="heading font-family:cursive">Book your flight</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">FlightId</th>
+        <th scope="col">AirlineName</th>
+        <th scope="col">Departure</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Departure Day</th>
+        <th scope="col">Arrival Day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let trv of travelerService.traveler |filter: filter | paginate:{itemsPerPage:5, currentPage: page}" >
+        <td>{{trv.FlightId}}</td>
+        <td>{{trv.AirlineName}}</td>
+        <td>{{trv.DepartLocation}}</td>
+        <td>{{trv.DestinLocation}}</td>
+        <td>{{trv.DepartTime| date: 'dd-MMM-yy'}}</td>
+        <td>{{trv.ArrivalTime| date: 'dd-MMM-yy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer">
+
+    <!-- pagination -->
+
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+  </div>
+</div>
+

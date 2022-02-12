@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TravelBooking"
+    }
+  },
+  "defaultProject": "TravelBooking",
+  "cli": {
+    "analytics": "49a25321-6610-4a55-b1de-f5707bd07091"
+  }
 }
